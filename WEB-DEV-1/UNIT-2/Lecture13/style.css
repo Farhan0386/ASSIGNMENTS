@@ -1,0 +1,52 @@
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+/* Box Styles */
+.box {
+  width: 150px;
+  height: 100px;
+  margin: 10px 0;
+  text-align: center;
+  line-height: 100px;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Static Example */
+.static {
+  background-color: lightblue;
+  position: static; /* Default, cannot be moved */
+}
+
+/* Relative Example */
+.relative {
+  background-color: lightgreen;
+  position: relative; /* Moves relative to normal spot */
+  top: 20px; /* Shift down */
+  left: 30px; /* Shift right */
+}
+
+/* Absolute Example */
+.container {
+  position: relative; /* Establishes positioning context */
+  width: 300px;
+  height: 200px;
+  background-color: #f0f0f0;
+  border: 1px solid #000;
+}
+
+.absolute {
+  background-color: coral;
+  position: absolute; /* Positioned relative to container */
+  top: 50px;
+  left: 50px;
+}
