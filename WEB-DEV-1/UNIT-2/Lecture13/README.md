@@ -36,7 +36,7 @@ It is split into two files:
 }
 ```
 
-### Relative Position
+Relative Position
 
 ```css
 .relative {
@@ -47,7 +47,7 @@ It is split into two files:
 }
 ```
 
-### Absolute Position
+Absolute Position
 
 ```css
 .container {

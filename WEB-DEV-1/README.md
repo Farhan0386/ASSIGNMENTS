@@ -11,7 +11,8 @@
 
 ## 🎯 Course Perspective
 
-This course provides a **hands-on introduction to front-end web development**, focusing on the three essential technologies of the web:  
+This course provides a **hands-on introduction to front-end web development**, focusing on the three essential technologies of the web:
+
 - 🧱 **HTML** for page structure  
 - 🎨 **CSS** for layout and visual design  
 - ⚙️ **JavaScript** for interactivity and logic  
@@ -33,10 +34,12 @@ Students learn to create **responsive, accessible, and interactive web pages** t
 
 ## 📘 Detailed Syllabus
 
-### 🧾 Unit 1: HTML & Web Foundation  
+### 🧾 Unit 1: HTML & Web Foundation
+
 **Hours:** 10  
 
 **Content:**  
+
 - Introduction to Web and HTML5  
 - Structure: `<!DOCTYPE html>`, `<html>`, `<head>`, `<body>`  
 - Basic tags: headings, paragraphs, line breaks, horizontal rules  
@@ -50,16 +53,19 @@ Students learn to create **responsive, accessible, and interactive web pages** t
 - Accessibility (ARIA basics) and SEO-friendly structure  
 
 **Practice Tasks:**  
+
 - Create a personal introduction page  
 - Build a feedback form using labels and inputs  
 - Design a simple portfolio with internal navigation  
 
 ---
 
-### 🎨 Unit 2: CSS – Core & Advanced  
+### 🎨 Unit 2: CSS – Core & Advanced
+
 **Hours:** 15  
 
-**Content:**  
+**Content:**
+
 - CSS basics: Inline, internal, external stylesheets  
 - Syntax, selectors, and specificity rules  
 - Colors (HEX, RGB, HSL), gradients, and shadows  
@@ -75,17 +81,20 @@ Students learn to create **responsive, accessible, and interactive web pages** t
 - Hover, focus, and active states  
 - Debugging with Chrome DevTools  
 
-**Practice Tasks:**  
+**Practice Tasks:**
+
 - Create a responsive layout using Flexbox  
 - Animate navigation links with hover transitions  
 - Design a three-section responsive portfolio homepage  
 
 ---
 
-### ⚙️ Unit 3: JavaScript Essentials  
+### ⚙️ Unit 3: JavaScript Essentials
+
 **Hours:** 10  
 
-**Content:**  
+**Content:**
+
 - Introduction to JavaScript and browser execution  
 - Setting up `<script>` in HTML and external JS files  
 - Variables and constants: `var`, `let`, `const`  
@@ -102,7 +111,8 @@ Students learn to create **responsive, accessible, and interactive web pages** t
 - Basic form validation using JavaScript  
 - Alert, prompt, and confirm dialog interactions  
 
-**Practice Tasks:**  
+**Practice Tasks:**
+
 - Create a simple interactive quiz app  
 - Build a dynamic image slider  
 - Validate form input before submission  
@@ -110,12 +120,14 @@ Students learn to create **responsive, accessible, and interactive web pages** t
 ---
 
 ### 🧱 Unit 4: Capstone Project  
+
 **Hours:** 10  
 
 **Objective:**  
 Develop a **fully responsive and interactive website** using HTML5, CSS3, and JavaScript.
 
-**Project Themes (Choose One):**  
+**Project Themes (Choose One):**
+
 - 🎓 Online Learning Platform  
 - 🏠 Real Estate Listing  
 - 💳 Fintech Dashboard  
@@ -123,7 +135,6 @@ Develop a **fully responsive and interactive website** using HTML5, CSS3, and Ja
 - ✈️ Travel Agency Website  
 - 🛒 E-commerce Store UI  
 
-**Requirements:**  
 - Responsive design (Flexbox or Grid mandatory)  
 - Semantic HTML structure  
 - Functional form with JS validation  
@@ -131,6 +142,7 @@ Develop a **fully responsive and interactive website** using HTML5, CSS3, and Ja
 - External CSS and JS linked properly  
 
 **Deliverables:**  
+
 - Complete project folder (`index.html`, `style.css`, `script.js`)  
 - Screenshots and demo video (optional)  
 - `README.md` explaining the project features and tools used  
@@ -164,13 +176,15 @@ Develop a **fully responsive and interactive website** using HTML5, CSS3, and Ja
 
 ## 🧩 Teaching & Learning Approach
 
-### 🏫 Inside Classroom  
+### 🏫 Inside Classroom
+
 - Live coding demonstrations  
 - Component-based website building exercises  
 - Peer code reviews and debugging  
 - Group projects and design feedback sessions  
 
-### 🏠 Outside Classroom  
+### 🏠 Outside Classroom
+
 - Case studies on real-world websites (Netflix, Zomato, Amazon)  
 - Practice on CodePen or JSFiddle  
 - Research on UI/UX design best practices  
