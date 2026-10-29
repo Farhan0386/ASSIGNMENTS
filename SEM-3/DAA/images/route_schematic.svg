@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="430" viewBox="0 0 900 430">
+  <rect width="900" height="430" fill="#f7f9fc" rx="20"/>
+  <text x="450" y="38" text-anchor="middle" font-family="Arial" font-size="23" font-weight="700" fill="#16324f">Sample Road Network and Planned Tour</text>
+  <g stroke="#9aaabd" stroke-width="4" fill="none" stroke-linecap="round">
+    <path d="M115 220 L270 110 L420 150 L570 100 L735 170 L615 330 L420 290 L270 350 L115 220"/>
+    <path d="M270 110 L270 350 M420 150 L420 290 M570 100 L615 330 M420 150 L615 330" stroke-dasharray="8 8"/>
+  </g>
+  <g stroke="#e76f51" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M115 220 L270 110 L420 150 L570 100 L615 330 L420 290 L270 350 L115 220"/>
+  </g>
+  <g font-family="Arial" font-size="15" text-anchor="middle" font-weight="700">
+    <g fill="#16324f"><circle cx="115" cy="220" r="31"/><circle cx="270" cy="110" r="25"/><circle cx="420" cy="150" r="25"/><circle cx="570" cy="100" r="25"/><circle cx="615" cy="330" r="25"/><circle cx="420" cy="290" r="25"/><circle cx="270" cy="350" r="25"/><circle cx="735" cy="170" r="25"/></g>
+    <g fill="white"><text x="115" y="225">DEPOT</text><text x="270" y="115">A</text><text x="420" y="155">B</text><text x="570" y="105">C</text><text x="615" y="335">D</text><text x="420" y="295">E</text><text x="270" y="355">F</text><text x="735" y="175">X</text></g>
+  </g>
+  <g font-family="Arial" font-size="13" fill="#536579">
+    <text x="165" y="150">4</text><text x="345" y="120">2</text><text x="495" y="115">5</text><text x="600" y="215">1</text><text x="520" y="315">4</text><text x="340" y="330">2</text>
+  </g>
+  <text x="450" y="405" text-anchor="middle" font-family="Arial" font-size="14" fill="#536579">Orange: delivered tour legs; grey: other roads. Sample dataset uses nodes DEPOT, A-F, X.</text>
+</svg>

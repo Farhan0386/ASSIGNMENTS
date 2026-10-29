@@ -1,0 +1,19 @@
+{
+  "depot": "DEPOT",
+  "nodes": ["DEPOT", "A", "B", "C", "D", "E", "F", "X"],
+  "edges": [
+    {"source": "DEPOT", "target": "A", "distance": 4},
+    {"source": "DEPOT", "target": "B", "distance": 6},
+    {"source": "A", "target": "B", "distance": 2},
+    {"source": "A", "target": "C", "distance": 5},
+    {"source": "B", "target": "C", "distance": 2},
+    {"source": "B", "target": "D", "distance": 5},
+    {"source": "C", "target": "D", "distance": 2},
+    {"source": "C", "target": "E", "distance": 4},
+    {"source": "D", "target": "E", "distance": 1},
+    {"source": "D", "target": "F", "distance": 5},
+    {"source": "E", "target": "F", "distance": 2},
+    {"source": "A", "target": "X", "distance": 7},
+    {"source": "X", "target": "F", "distance": 3}
+  ]
+}

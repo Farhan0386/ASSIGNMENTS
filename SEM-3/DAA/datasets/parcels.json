@@ -1,0 +1,13 @@
+{
+  "vehicle_capacity": 15,
+  "parcels": [
+    {"parcel_id": "P-101", "destination": "A", "weight": 4, "deadline": "2026-11-02T10:00", "priority": 8},
+    {"parcel_id": "P-102", "destination": "B", "weight": 7, "deadline": "2026-11-02T09:30", "priority": 12},
+    {"parcel_id": "P-103", "destination": "C", "weight": 5, "deadline": "2026-11-02T11:00", "priority": 10},
+    {"parcel_id": "P-104", "destination": "D", "weight": 6, "deadline": "2026-11-02T09:00", "priority": 9},
+    {"parcel_id": "P-105", "destination": "E", "weight": 3, "deadline": "2026-11-02T12:00", "priority": 6},
+    {"parcel_id": "P-106", "destination": "F", "weight": 8, "deadline": "2026-11-02T09:15", "priority": 11},
+    {"parcel_id": "P-107", "destination": "B", "weight": 2, "deadline": "2026-11-02T10:30", "priority": 4},
+    {"parcel_id": "P-108", "destination": "D", "weight": 5, "deadline": "2026-11-02T10:15", "priority": 7}
+  ]
+}
