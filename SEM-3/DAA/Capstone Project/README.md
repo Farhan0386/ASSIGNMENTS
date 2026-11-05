@@ -22,6 +22,8 @@ python -m src.main
 On macOS/Linux, activate with `source .venv/bin/activate`. The planner itself uses only the Python standard library. If matplotlib is unavailable, the application still runs; only chart generation is skipped.
 
 Run automated correctness checks with `python -m unittest discover -s tests -v`. Rebuild performance observations and chart with `python -m src.benchmark --output images/runtime_benchmarks.png --csv results/benchmark_results.csv`. Open `mini_courier_planner.ipynb` in Jupyter for an interactive walkthrough.
+![Runtime benchmark chart](images/runtime_benchmarks.png)
+![Sample road network and planned tour](images/route_schematic.svg)
 
 ## Project structure
 
@@ -52,4 +54,4 @@ Benchmark cases are deterministically generated at several graph and parcel size
 
 ## Deliverables
 
-The report in `docs/PROJECT_REPORT.md` covers problem design, data model, method, correctness evidence, sample results, complexity, experimental setup, conclusions, and future work. `images/route_schematic.png` illustrates the example network. Submit this folder or push it to a private repository; tag the final commit `v1.0-final-submission` after review. No repository URL or commit tag is claimed by this local deliverable.
+The report in `docs/PROJECT_REPORT.md` covers problem design, data model, method, correctness evidence, sample results, complexity, experimental setup, conclusions, and future work. `images/route_schematic.svg` illustrates the example network. Submit this folder or push it to a private repository; tag the final commit `v1.0-final-submission` after review. No repository URL or commit tag is claimed by this local deliverable.
