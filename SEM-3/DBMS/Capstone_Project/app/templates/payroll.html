@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Payroll · PayTrack{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">HR / ADMIN</p><h1>Monthly payroll</h1><p class="muted">A single stored procedure generates all employee payroll entries inside one transaction.</p></div></div>
+<section class="panel section-gap"><h2>Generate payroll</h2>
+<form method="post" class="inline-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><label>Payroll month<input type="month" name="pay_period" required></label><button class="button" type="submit">Generate payroll</button></form>
+<p class="hint">The same month cannot be processed twice. Correct source data before generating a new period.</p></section>
+<section class="panel section-gap"><div class="panel-heading"><h2>Payroll runs</h2></div>
+<div class="table-wrap"><table><thead><tr><th>Period</th><th>Status</th><th>Employees</th><th>Total net payroll</th><th>Processed at</th><th>Slips</th></tr></thead><tbody>
+{% for run in runs %}<tr><td>{{ '%02d'|format(run.pay_month) }}/{{ run.pay_year }}</td><td><span class="tag {{ 'success' if run.status == 'PROCESSED' else 'warning' }}">{{ run.status }}</span></td><td>{{ run.employee_count }}</td><td>₹{{ '%.2f'|format(run.net_payroll) }}</td><td>{{ run.processed_at or '—' }}</td><td><a href="{{ url_for('payslip', run_id=run.run_id) }}">View payslips</a></td></tr>{% else %}<tr><td colspan="6" class="empty">No payroll runs yet.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}

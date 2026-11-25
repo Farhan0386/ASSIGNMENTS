@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Payroll & Attendance{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('dashboard') if current_user.get('user_id') else url_for('login') }}">PayTrack</a>
+    {% if current_user.get('user_id') %}
+    <nav>
+      <a href="{{ url_for('dashboard') }}">Dashboard</a>
+      {% if current_user.get('role') == 'HR_ADMIN' %}
+        <a href="{{ url_for('employees') }}">Employees</a>
+        <a href="{{ url_for('attendance') }}">Attendance</a>
+        <a href="{{ url_for('leave') }}">Leave</a>
+        <a href="{{ url_for('salary') }}">Salary</a>
+        <a href="{{ url_for('payroll') }}">Payroll</a>
+        <a href="{{ url_for('attendance_report') }}">Attendance report</a>
+        <a href="{{ url_for('late_marks_report') }}">Late marks</a>
+      {% else %}
+        <a href="{{ url_for('leave') }}">My Leave</a>
+      {% endif %}
+    </nav>
+    <div class="userbox">
+      <span>{{ current_user.get('username') }} · {{ current_user.get('role') }}</span>
+      <form method="post" action="{{ url_for('logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button button-small button-quiet" type="submit">Log out</button></form>
+    </div>
+    {% endif %}
+  </header>
+  <main class="container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}<div class="flash-stack">
+        {% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}
+      </div>{% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+  <footer class="footer">Payroll & Attendance Management System · Academic DBMS capstone</footer>
+</body>
+</html>

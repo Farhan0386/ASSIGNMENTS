@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Late marks · PayTrack{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">PHASE 3 · REPORTING</p><h1>Late-marks report</h1><p class="muted">Company start time is assumed to be 09:30 for this academic model.</p></div></div>
+<section class="panel section-gap"><form method="get" class="inline-form"><label>Report month<input type="month" name="period" value="{{ period }}" required></label><button class="button" type="submit">Run report</button></form>
+<div class="table-wrap section-gap"><table><thead><tr><th>Employee</th><th>Date</th><th>Check in</th><th>Minutes late</th></tr></thead><tbody>
+{% for row in rows %}<tr><td>{{ row.employee_code }} · {{ row.full_name }}</td><td>{{ row.attendance_date }}</td><td>{{ row.check_in }}</td><td>{{ row.minutes_late }}</td></tr>{% else %}<tr><td colspan="4" class="empty">No late marks for this month.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}

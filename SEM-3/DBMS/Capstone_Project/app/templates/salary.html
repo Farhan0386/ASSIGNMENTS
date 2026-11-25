@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Salary structures · PayTrack{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">HR / ADMIN</p><h1>Salary structures</h1><p class="muted">Salary revisions are effective from the first day of a month. Historical structures remain available.</p></div></div>
+<section class="panel section-gap"><h2>Create salary revision</h2>
+<form method="post" class="form-grid form-grid-3">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <label>Employee<select name="employee_id" required>{% for e in employees %}<option value="{{ e.employee_id }}">{{ e.employee_code }} · {{ e.full_name }}</option>{% endfor %}</select></label>
+  <label>Effective from<input type="date" name="effective_from" required></label>
+  <label>Basic salary<input type="number" min="0.01" step="0.01" name="basic_salary" required></label>
+  <label>HRA<input type="number" min="0" step="0.01" name="hra" value="0"></label>
+  <label>Special allowance<input type="number" min="0" step="0.01" name="special_allowance" value="0"></label>
+  <label>Other allowance<input type="number" min="0" step="0.01" name="other_allowance" value="0"></label>
+  <label>PF rate (%)<input type="number" min="0" max="100" step="0.01" name="pf_rate_percent" value="12"></label>
+  <div class="form-actions"><button class="button" type="submit">Save revision</button></div>
+</form></section>
+<section class="panel section-gap"><div class="panel-heading"><h2>Salary history</h2></div>
+<div class="table-wrap"><table><thead><tr><th>Employee</th><th>Effective from</th><th>Effective to</th><th>Basic</th><th>HRA</th><th>Special</th><th>Other</th><th>PF %</th></tr></thead><tbody>
+{% for row in rows %}<tr><td>{{ row.employee_code }} · {{ row.full_name }}</td><td>{{ row.effective_from }}</td><td>{{ row.effective_to or 'Current' }}</td><td>₹{{ '%.2f'|format(row.basic_salary) }}</td><td>₹{{ '%.2f'|format(row.hra) }}</td><td>₹{{ '%.2f'|format(row.special_allowance) }}</td><td>₹{{ '%.2f'|format(row.other_allowance) }}</td><td>{{ row.pf_rate_percent }}</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}

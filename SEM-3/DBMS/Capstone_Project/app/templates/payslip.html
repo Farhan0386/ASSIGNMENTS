@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Payslip · PayTrack{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">PAYROLL STATEMENT</p><h1>Payslip · {{ '%02d'|format(run.pay_month) }}/{{ run.pay_year }}</h1><p class="muted">Payroll is calculated from the stored salary snapshot for this period.</p></div><button class="button button-quiet" onclick="window.print()">Print</button></div>
+{% for row in rows %}<section class="panel payslip section-gap">
+  <div class="payslip-heading"><div><h2>{{ row.full_name }}</h2><span class="muted">{{ row.employee_code }}</span></div><span class="tag success">PROCESSED</span></div>
+  <div class="payslip-grid">
+    <div><span>Basic salary</span><strong>₹{{ '%.2f'|format(row.basic_salary) }}</strong></div>
+    <div><span>HRA</span><strong>₹{{ '%.2f'|format(row.hra) }}</strong></div>
+    <div><span>Special allowance</span><strong>₹{{ '%.2f'|format(row.special_allowance) }}</strong></div>
+    <div><span>Other allowance</span><strong>₹{{ '%.2f'|format(row.other_allowance) }}</strong></div>
+    <div><span>Gross salary</span><strong>₹{{ '%.2f'|format(row.gross_salary) }}</strong></div>
+    <div><span>Working days</span><strong>{{ row.working_days }}</strong></div>
+    <div><span>Unpaid days</span><strong>{{ row.unpaid_days }}</strong></div>
+    <div><span>Attendance deduction</span><strong>₹{{ '%.2f'|format(row.attendance_deduction) }}</strong></div>
+    <div><span>PF deduction</span><strong>₹{{ '%.2f'|format(row.pf_deduction) }}</strong></div>
+    <div><span>Tax deduction</span><strong>₹{{ '%.2f'|format(row.tax_deduction) }}</strong></div>
+  </div>
+  <div class="net-pay"><span>Net salary</span><strong>₹{{ '%.2f'|format(row.net_salary) }}</strong></div>
+</section>{% endfor %}
+{% endblock %}

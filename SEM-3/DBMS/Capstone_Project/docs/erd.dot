@@ -1,0 +1,33 @@
+digraph PayTrackERD {
+  graph [rankdir=LR, splines=ortho, nodesep=0.42, ranksep=0.85, bgcolor="white", pad=0.25, fontname="Arial", label="PayTrack — Entity Relationship Diagram", labelloc=t, fontsize=20];
+  node [shape=plain, fontname="Arial", fontsize=10];
+  edge [fontname="Arial", fontsize=9, color="#64748b", arrowsize=0.7];
+
+  department [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>DEPARTMENT</B></TD></TR><TR><TD ALIGN="LEFT">PK department_id</TD></TR><TR><TD ALIGN="LEFT">UQ department_name</TD></TR></TABLE> >];
+  designation [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>DESIGNATION</B></TD></TR><TR><TD ALIGN="LEFT">PK designation_id</TD></TR><TR><TD ALIGN="LEFT">UQ designation_name</TD></TR></TABLE> >];
+  employee [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#bfdbfe"><B>EMPLOYEE</B></TD></TR><TR><TD ALIGN="LEFT">PK employee_id</TD></TR><TR><TD ALIGN="LEFT">UQ employee_code, email</TD></TR><TR><TD ALIGN="LEFT">FK department_id</TD></TR><TR><TD ALIGN="LEFT">FK designation_id</TD></TR><TR><TD ALIGN="LEFT">hire_date, employment_status</TD></TR></TABLE> >];
+  user_account [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>USER_ACCOUNT</B></TD></TR><TR><TD ALIGN="LEFT">PK user_id</TD></TR><TR><TD ALIGN="LEFT">UQ username</TD></TR><TR><TD ALIGN="LEFT">FK employee_id (nullable)</TD></TR><TR><TD ALIGN="LEFT">password_hash, role</TD></TR></TABLE> >];
+  attendance [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>ATTENDANCE</B></TD></TR><TR><TD ALIGN="LEFT">PK attendance_id</TD></TR><TR><TD ALIGN="LEFT">FK employee_id</TD></TR><TR><TD ALIGN="LEFT">UQ employee_id + date</TD></TR><TR><TD ALIGN="LEFT">check_in, check_out, status</TD></TR></TABLE> >];
+  leave_type [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>LEAVE_TYPE</B></TD></TR><TR><TD ALIGN="LEFT">PK leave_type_id</TD></TR><TR><TD ALIGN="LEFT">UQ leave_type_name</TD></TR><TR><TD ALIGN="LEFT">is_paid</TD></TR></TABLE> >];
+  leave_request [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>LEAVE_REQUEST</B></TD></TR><TR><TD ALIGN="LEFT">PK leave_id</TD></TR><TR><TD ALIGN="LEFT">FK employee_id, leave_type_id</TD></TR><TR><TD ALIGN="LEFT">FK reviewed_by</TD></TR><TR><TD ALIGN="LEFT">start_date, end_date, status</TD></TR></TABLE> >];
+  company_holiday [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>COMPANY_HOLIDAY</B></TD></TR><TR><TD ALIGN="LEFT">PK holiday_date</TD></TR><TR><TD ALIGN="LEFT">holiday_name</TD></TR></TABLE> >];
+  salary_structure [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>SALARY_STRUCTURE</B></TD></TR><TR><TD ALIGN="LEFT">PK salary_structure_id</TD></TR><TR><TD ALIGN="LEFT">FK employee_id</TD></TR><TR><TD ALIGN="LEFT">effective_from, effective_to</TD></TR><TR><TD ALIGN="LEFT">basic, HRA, allowances, PF %</TD></TR></TABLE> >];
+  tax_bracket [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>TAX_BRACKET</B></TD></TR><TR><TD ALIGN="LEFT">PK tax_bracket_id</TD></TR><TR><TD ALIGN="LEFT">tax_year, lower/upper limit</TD></TR><TR><TD ALIGN="LEFT">rate_percent</TD></TR></TABLE> >];
+  payroll_run [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dbeafe"><B>PAYROLL_RUN</B></TD></TR><TR><TD ALIGN="LEFT">PK run_id</TD></TR><TR><TD ALIGN="LEFT">UQ year + month</TD></TR><TR><TD ALIGN="LEFT">FK processed_by</TD></TR><TR><TD ALIGN="LEFT">status, processed_at</TD></TR></TABLE> >];
+  payroll_entry [label=< <TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="5"><TR><TD BGCOLOR="#dcfce7"><B>PAYROLL_ENTRY</B></TD></TR><TR><TD ALIGN="LEFT">PK entry_id</TD></TR><TR><TD ALIGN="LEFT">FK run_id, employee_id</TD></TR><TR><TD ALIGN="LEFT">FK salary_structure_id</TD></TR><TR><TD ALIGN="LEFT">salary snapshots, deductions</TD></TR><TR><TD ALIGN="LEFT">net_salary</TD></TR></TABLE> >];
+
+  department -> employee [label="1 : many"];
+  designation -> employee [label="1 : many"];
+  employee -> user_account [label="1 : 0..1"];
+  employee -> attendance [label="1 : many"];
+  employee -> leave_request [label="1 : many"];
+  leave_type -> leave_request [label="1 : many"];
+  user_account -> leave_request [label="reviews"];
+  employee -> salary_structure [label="1 : many"];
+  user_account -> payroll_run [label="processes"];
+  payroll_run -> payroll_entry [label="1 : many"];
+  employee -> payroll_entry [label="1 : many"];
+  salary_structure -> payroll_entry [label="1 : many"];
+  company_holiday [style=filled, fillcolor="#fff7ed"];
+  tax_bracket [style=filled, fillcolor="#fff7ed"];
+}

@@ -1,0 +1,98 @@
+erDiagram
+    DEPARTMENT ||--o{ EMPLOYEE : contains
+    DESIGNATION ||--o{ EMPLOYEE : assigns
+    EMPLOYEE ||--o| USER_ACCOUNT : authenticates
+    EMPLOYEE ||--o{ ATTENDANCE : records
+    EMPLOYEE ||--o{ LEAVE_REQUEST : submits
+    LEAVE_TYPE ||--o{ LEAVE_REQUEST : categorizes
+    USER_ACCOUNT ||--o{ LEAVE_REQUEST : reviews
+    EMPLOYEE ||--o{ SALARY_STRUCTURE : has_history
+    USER_ACCOUNT ||--o{ PAYROLL_RUN : processes
+    PAYROLL_RUN ||--|{ PAYROLL_ENTRY : contains
+    EMPLOYEE ||--o{ PAYROLL_ENTRY : receives
+    SALARY_STRUCTURE ||--o{ PAYROLL_ENTRY : snapshots
+
+    DEPARTMENT {
+      bigint department_id PK
+      varchar department_name UK
+    }
+    DESIGNATION {
+      bigint designation_id PK
+      varchar designation_name UK
+    }
+    EMPLOYEE {
+      bigint employee_id PK
+      varchar employee_code UK
+      varchar email UK
+      bigint department_id FK
+      bigint designation_id FK
+      date hire_date
+      varchar employment_status
+    }
+    USER_ACCOUNT {
+      bigint user_id PK
+      varchar username UK
+      text password_hash
+      varchar role
+      bigint employee_id FK
+    }
+    ATTENDANCE {
+      bigint attendance_id PK
+      bigint employee_id FK
+      date attendance_date
+      time check_in
+      time check_out
+      varchar status
+    }
+    LEAVE_TYPE {
+      bigint leave_type_id PK
+      varchar leave_type_name UK
+      boolean is_paid
+    }
+    LEAVE_REQUEST {
+      bigint leave_id PK
+      bigint employee_id FK
+      bigint leave_type_id FK
+      bigint reviewed_by FK
+      date start_date
+      date end_date
+      varchar status
+    }
+    COMPANY_HOLIDAY {
+      date holiday_date PK
+      varchar holiday_name
+    }
+    SALARY_STRUCTURE {
+      bigint salary_structure_id PK
+      bigint employee_id FK
+      date effective_from
+      date effective_to
+      numeric basic_salary
+      numeric hra
+      numeric special_allowance
+      numeric other_allowance
+      numeric pf_rate_percent
+    }
+    TAX_BRACKET {
+      bigint tax_bracket_id PK
+      integer tax_year
+      numeric lower_limit
+      numeric upper_limit
+      numeric rate_percent
+    }
+    PAYROLL_RUN {
+      bigint run_id PK
+      integer pay_year
+      integer pay_month
+      bigint processed_by FK
+      varchar status
+    }
+    PAYROLL_ENTRY {
+      bigint entry_id PK
+      bigint run_id FK
+      bigint employee_id FK
+      bigint salary_structure_id FK
+      numeric gross_salary
+      numeric deductions
+      numeric net_salary
+    }

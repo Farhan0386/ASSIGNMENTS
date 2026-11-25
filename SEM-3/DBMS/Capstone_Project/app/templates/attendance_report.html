@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}Attendance report · PayTrack{% endblock %}
+{% block content %}
+<div class="page-heading"><div><p class="eyebrow">PHASE 3 · REPORTING</p><h1>Monthly attendance summary</h1><p class="muted">Includes attendance categories and approved paid/unpaid leave for the selected month.</p></div></div>
+<section class="panel section-gap"><form method="get" class="inline-form"><label>Report month<input type="month" name="period" value="{{ period }}" required></label><button class="button" type="submit">Run report</button></form>
+<div class="table-wrap section-gap"><table><thead><tr><th>Employee</th><th>Working</th><th>Present</th><th>WFH</th><th>Absent</th><th>Half</th><th>Paid leave</th><th>Unpaid leave</th><th>Attendance %</th></tr></thead><tbody>
+{% for row in rows %}<tr><td>{{ row.employee_code }} · {{ row.full_name }}</td><td>{{ row.working_days }}</td><td>{{ row.present_days }}</td><td>{{ row.wfh_days }}</td><td>{{ row.absent_days }}</td><td>{{ row.half_days }}</td><td>{{ row.paid_leave_days }}</td><td>{{ row.unpaid_leave_days }}</td><td>{{ row.attendance_percentage or 0 }}%</td></tr>{% else %}<tr><td colspan="9" class="empty">No report rows.</td></tr>{% endfor %}
+</tbody></table></div></section>
+{% endblock %}
